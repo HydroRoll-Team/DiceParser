@@ -19,6 +19,7 @@ jobs:
       - name: install qt6
         run: |
          sudo apt update
+         sudo apt-get install --reinstall ca-certificates
          sudo apt install software-properties-common
          sudo add-apt-repository ppa:beineri/opt-qt-6.0.0-focal
          sudo apt update
