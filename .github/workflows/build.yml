@@ -20,7 +20,7 @@ jobs:
         run: |
          sudo apt update
          sudo apt install software-properties-common
-         sudo add-apt-repository ppa:beineri/opt-qt-6.2.0-qt-6.2.0
+         sudo add-apt-repository ppa:beineri/opt-qt-6.2.0-focal
          sudo apt update
          sudo apt install qt6-default
 
