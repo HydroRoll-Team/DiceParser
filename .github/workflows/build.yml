@@ -1,23 +1,30 @@
- jobs:
+name: build
+
+on:
+ push:
+   branches:
+     - master
+
+jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Build and Install
-      run: |
-        git clone --recursive https://invent.kde.org/rolisteam/rolisteam-diceparser.git
-        cd rolisteam-diceparser
-        mkdir build
-        cd build
-        cmake ../ -DBUILD_CLI=ON
-        make
-        sudo make install
+      - name: Build and Install
+        run: |
+          git clone --recursive https://invent.kde.org/rolisteam/rolisteam-diceparser.git
+          cd rolisteam-diceparser
+          mkdir build
+          cd build
+          cmake ../ -DBUILD_CLI=ON
+          make
+          sudo make install
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: compiled-files
-        path: rolisteam-diceparser/build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-files
+          path: rolisteam-diceparser/build
