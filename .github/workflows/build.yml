@@ -13,9 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: install dependence
+        run: git clone --recursive https://invent.kde.org/rolisteam/rolisteam-diceparser.git
+        
       - name: Build and Install
         run: |
-          git clone --recursive https://invent.kde.org/rolisteam/rolisteam-diceparser.git
           cd rolisteam-diceparser
           mkdir build
           cd build
