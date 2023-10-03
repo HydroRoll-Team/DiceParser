@@ -15,7 +15,18 @@ jobs:
 
       - name: install dependence
         run: git clone --recursive https://invent.kde.org/rolisteam/rolisteam-diceparser.git
-        
+
+      - name: install qt6
+        run: |
+         sudo apt update
+         sudo apt install software-properties-common
+         sudo add-apt-repository ppa:beineri/opt-qt-6.2.0
+         sudo apt update
+         sudo apt install qt6-default
+
+      - name: verify qt6
+        run: qt6-config --version
+
       - name: Build and Install
         run: |
           cd rolisteam-diceparser
