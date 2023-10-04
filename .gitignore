@@ -1,31 +1,6 @@
-# C++ objects and libs
+# pdm
+.pdm-python
+.pdm-build/**/*
 
-*.slo
-*.lo
-*.o
-*.a
-*.la
-*.lai
-*.so
-*.dll
-*.dylib
-
-# Qt-es
-
-*.txt.user
-*.pro.user
-*.pro.user.*
-moc_*.cpp
-qrc_*.cpp
-Makefile
-*-build-*
-build*
-
-*crashes*
-*hangs*
-*queue*
-*fuzzer0*
-po/*
-*.po
-*.pot
-enpo/*
+# Python venv
+.venv/**/*
