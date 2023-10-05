@@ -14,6 +14,7 @@ class DiceRoller(QObject):
         self.m_diceList = ""
         self.m_resultStr = ""
         self.m_command = ""
+        
         self.m_result = 0.0
         self.m_error = ""
         self.m_diceparser = DiceParser()
