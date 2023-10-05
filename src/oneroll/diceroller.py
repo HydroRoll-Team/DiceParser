@@ -1,6 +1,4 @@
 import json
-from PySide2.QtCore import QObject, Signal
-from PySide2.QtConcurrent import QtConcurrent
 
 class DiceRoller(QObject):
     commandChanged = Signal()
