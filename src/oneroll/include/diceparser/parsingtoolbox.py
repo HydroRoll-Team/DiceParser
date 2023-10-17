@@ -1,40 +1,45 @@
-class SubtituteInfo:
-    def __init__(self):
-        self._length = 0
-        self._resultIndex = 0
-        self._position = 0
-        self._digitNumber = 0
-        self._subIndex = 0
+__all__ = ['Parsingtoolbox']
 
-    def isValid(self):
-        return self._length > 0
 
-    def length(self):
-        return self._length
+class Parsingtoolbox:
 
-    def setLength(self, length):
-        self._length = length
+    class SubtituteInfo:
+        def __init__(self):
+            self._length = 0
+            self._resultIndex = 0
+            self._position = 0
+            self._digitNumber = 0
+            self._subIndex = 0
 
-    def resultIndex(self):
-        return self._resultIndex
+        def isValid(self):
+            return self._length > 0
 
-    def setResultIndex(self, resultIndex):
-        self._resultIndex = resultIndex
+        def length(self):
+            return self._length
 
-    def position(self):
-        return self._position
+        def setLength(self, length):
+            self._length = length
 
-    def setPosition(self, position):
-        self._position = position
+        def resultIndex(self):
+            return self._resultIndex
 
-    def digitNumber(self):
-        return self._digitNumber
+        def setResultIndex(self, resultIndex):
+            self._resultIndex = resultIndex
 
-    def setDigitNumber(self, digitNumber):
-        self._digitNumber = digitNumber
+        def position(self):
+            return self._position
 
-    def subIndex(self):
-        return self._subIndex
+        def setPosition(self, position):
+            self._position = position
 
-    def setSubIndex(self, subIndex):
-        self._subIndex = subIndex
+        def digitNumber(self):
+            return self._digitNumber
+
+        def setDigitNumber(self, digitNumber):
+            self._digitNumber = digitNumber
+
+        def subIndex(self):
+            return self._subIndex
+
+        def setSubIndex(self, subIndex):
+            self._subIndex = subIndex

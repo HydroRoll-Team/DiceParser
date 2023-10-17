@@ -41,27 +41,26 @@ class Die:
     def get_value(self):
         if self.has_value:
             return self.value
-        else:
-            value = 0
-            for i, tmp in enumerate(self.roll_result):
-                if i > 0:
-                    if self.op == ArithmeticOperator.PLUS:
-                        value += tmp
-                    elif self.op == ArithmeticOperator.MULTIPLICATION:
-                        value *= tmp
-                    elif self.op == ArithmeticOperator.MINUS:
-                        value -= tmp
-                    elif self.op == ArithmeticOperator.INTEGER_DIVIDE or self.op == ArithmeticOperator.DIVIDE:
-                        if tmp != 0:
-                            value //= tmp
-                        else:
-                            # error()
-                            pass
-                    elif self.op == ArithmeticOperator.POW:
-                        value = value ** tmp
-                else:
-                    value = tmp
-            return value
+        value = 0
+        for i, tmp in enumerate(self.roll_result):
+            if i > 0:
+                if self.op == ArithmeticOperator.PLUS:
+                    value += tmp
+                elif self.op == ArithmeticOperator.MULTIPLICATION:
+                    value *= tmp
+                elif self.op == ArithmeticOperator.MINUS:
+                    value -= tmp
+                elif self.op in [
+                    ArithmeticOperator.INTEGER_DIVIDE,
+                    ArithmeticOperator.DIVIDE,
+                ]:
+                    if tmp != 0:
+                        value //= tmp
+                elif self.op == ArithmeticOperator.POW:
+                    value = value ** tmp
+            else:
+                value = tmp
+        return value
 
     def get_base(self):
         return self.base

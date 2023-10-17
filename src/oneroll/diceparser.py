@@ -1,9 +1,13 @@
 import json
 from typing import Callable, Dict, List, Tuple
+from oneroll.parsingtoolbox import Parsingtoolbox
+from oneroll.include.diceparser.diceparserhelper import Dice
+from oneroll.include.diceparser.dicealias import DiceAlias
+
 
 class DiceParser:
     def __init__(self):
-        self.parsingToolbox = ParsingToolBox()
+        self.parsingToolbox = Parsingtoolbox()
         self.command = ""
 
     def constAliases(self) -> List[DiceAlias]:
@@ -27,14 +31,18 @@ class DiceParser:
         self.command = self.command.replace(self.parsingToolbox.getComment(), "")
         value = bool(instructions)
         if not value:
-            self.parsingToolbox.addError(Dice.ERROR_CODE.NOTHING_UNDERSTOOD,
-                                         "Nothing was understood. To roll dice: !1d6 - full documentation: "
-                                         "<a href=\"https://github.com/Rolisteam/DiceParser/blob/master/HelpMe.md\">"
-                                         "https://github.com/Rolisteam/DiceParser/blob/master/HelpMe.md</a>")
+            self.parsingToolbox.addError(
+                Dice.ERROR_CODE.NOTHING_UNDERSTOOD,
+                "Nothing was understood. To roll dice: !1d6 - full documentation: "
+                '<a href="https://github.com/Rolisteam/DiceParser/blob/master/HelpMe.md">'
+                "https://github.com/Rolisteam/DiceParser/blob/master/HelpMe.md</a>",
+            )
         elif value and str:
             i = len(self.command) - len(str)
-            self.parsingToolbox.addWarning(Dice.ERROR_CODE.UNEXPECTED_CHARACTER,
-                                           f"Unexpected character at {i} - end of command was ignored \"{str}\"")
+            self.parsingToolbox.addWarning(
+                Dice.ERROR_CODE.UNEXPECTED_CHARACTER,
+                f'Unexpected character at {i} - end of command was ignored "{str}"',
+            )
 
         if self.parsingToolbox.hasError():
             value = False
@@ -107,14 +115,20 @@ class DiceParser:
     def finalStringResult(self, colorize: Callable[[str, str, bool], str]) -> str:
         return self.parsingToolbox.finalStringResult(colorize)
 
-    def resultAsJSon(self, colorize: Callable[[str, str, bool], str], removeUnhighligthed: bool) -> str:
+    def resultAsJSon(
+        self, colorize: Callable[[str, str, bool], str], removeUnhighligthed: bool
+    ) -> str:
         obj = {}
         instructions = []
         for start in self.parsingToolbox.getStartNodes():
             inst = {}
 
-            self.parsingToolbox.addResultInJson(inst, Dice.RESULT_TYPE.SCALAR, "scalar", start, True)
-            self.parsingToolbox.addResultInJson(inst, Dice.RESULT_TYPE.STRING, "string", start, False)
+            self.parsingToolbox.addResultInJson(
+                inst, Dice.RESULT_TYPE.SCALAR, "scalar", start, True
+            )
+            self.parsingToolbox.addResultInJson(
+                inst, Dice.RESULT_TYPE.STRING, "string", start, False
+            )
             self.parsingToolbox.addDiceResultInJson(inst, start, colorize)
 
             instructions.append(inst)
@@ -122,7 +136,9 @@ class DiceParser:
         obj["comment"] = self.parsingToolbox.getComment()
         obj["error"] = self.humanReadableError()
         obj["scalar"] = self.parsingToolbox.finalScalarResult()[0]
-        obj["string"] = self.parsingToolbox.finalStringResult(colorize, removeUnhighligthed)
+        obj["string"] = self.parsingToolbox.finalStringResult(
+            colorize, removeUnhighligthed
+        )
         obj["warning"] = self.humanReadableWarning()
         obj["command"] = self.command
 

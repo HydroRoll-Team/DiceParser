@@ -1,6 +1,7 @@
 import uuid
 from oneroll.include.diceparser.diceparserhelper import Dice
 
+
 class ExecutionNode:
     def __init__(self):
         self.m_previousNode = None
@@ -51,7 +52,7 @@ class ExecutionNode:
             s += self.to_string(False)
             s += " -> "
             s += self.m_nextNode.to_string(False)
-            s += "[label=\"next\"];\n"
+            s += '[label="next"];\n'
             self.m_nextNode.generate_dot_tree(s)
         else:
             s += self.to_string(False)
@@ -61,7 +62,7 @@ class ExecutionNode:
             s += self.to_string(False)
             s += " ->"
             s += self.m_result.to_string(False)
-            s += " [label=\"Result\", style=\"dashed\"];\n"
+            s += ' [label="Result", style="dashed"];\n'
             if not self.m_nextNode:
                 self.m_result.generate_dot_tree(s)
 

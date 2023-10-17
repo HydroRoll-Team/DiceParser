@@ -1,0 +1,43 @@
+from typing import List
+from oneroll.include.diceparser.dicealias import DiceAlias
+
+
+class Parsingtoolbox:
+    def __init__(self) -> None:
+        ...
+
+    def getAliases(self) -> List[DiceAlias]:
+        ...
+
+    def aliases(self) -> List[DiceAlias]:
+        ...
+
+    def cleanUpAliases(self) -> None:
+        ...
+
+    def insertAlias(self, dice: DiceAlias, i: int):
+        ...
+
+    def convertAlias(self, str: str) -> str:
+        ...
+
+    def clearUp(self):
+        ...
+
+    def readInstructionList(self, str: str, f: bool):
+        ...
+
+    def getComment(self) -> str:
+        ...
+
+    def addError(self, error, message) -> None:
+        ...
+
+    def addWarning(self, warning, message) -> None:
+        ...
+
+    def hasError(self) -> None:
+        ...
+
+    def getStartNodes(self) -> None:
+        ...
