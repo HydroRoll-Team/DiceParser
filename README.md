@@ -11,6 +11,7 @@ OneRoll，用一条指令实现几乎所有跑团所需功能之意（当然你�
 ### 语法
 
 语法继承自 DiceParser，但有一些细微的改变。
+
 ```
 Program =: Instruction [InstructionSeparator, Instruction]* Comment
 InstructionSeparator = ;
