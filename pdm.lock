@@ -6,7 +6,7 @@ groups = ["default"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:354de3959740ede5f61f7e3ea6981486fc175acdbd64270efff6bd0c80277c44"
+content_hash = "sha256:194594bf3015732474602e64211c2374ac73335a0d7a893d0cbde73409e41dd3"
 
 [[package]]
 name = "docutils"
@@ -16,4 +16,14 @@ summary = "Docutils -- Python Documentation Utilities"
 files = [
     {file = "docutils-0.20.1-py3-none-any.whl", hash = "sha256:96f387a2c5562db4476f09f13bbab2192e764cac08ebbf3a34a95d9b1e4a59d6"},
     {file = "docutils-0.20.1.tar.gz", hash = "sha256:f08a4e276c3a1583a86dce3e34aba3fe04d02bba2dd51ed16106244e8a923e3b"},
+]
+
+[[package]]
+name = "lark"
+version = "1.1.8"
+requires_python = ">=3.6"
+summary = "a modern parsing library"
+files = [
+    {file = "lark-1.1.8-py3-none-any.whl", hash = "sha256:7d2c221a66a8165f3f81aacb958d26033d40d972fdb70213ab0a2e0627e29c86"},
+    {file = "lark-1.1.8.tar.gz", hash = "sha256:7ef424db57f59c1ffd6f0d4c2b705119927f566b68c0fe1942dddcc0e44391a5"},
 ]
