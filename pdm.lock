@@ -3,10 +3,19 @@
 
 [metadata]
 groups = ["default"]
-cross_platform = true
-static_urls = false
-lock_version = "4.3"
-content_hash = "sha256:194594bf3015732474602e64211c2374ac73335a0d7a893d0cbde73409e41dd3"
+strategy = ["cross_platform"]
+lock_version = "4.4"
+content_hash = "sha256:46f41a4ad92f2d9656ddc66608f0e92c5a814c8591ea5e346b6a455f36cc42d7"
+
+[[package]]
+name = "cachetools"
+version = "5.3.2"
+requires_python = ">=3.7"
+summary = "Extensible memoizing collections and decorators"
+files = [
+    {file = "cachetools-5.3.2-py3-none-any.whl", hash = "sha256:861f35a13a451f94e301ce2bec7cac63e881232ccce7ed67fab9b5df4d3beaa1"},
+    {file = "cachetools-5.3.2.tar.gz", hash = "sha256:086ee420196f7b2ab9ca2db2520aca326318b68fe5ba8bc4d49cca91add450f2"},
+]
 
 [[package]]
 name = "docutils"
