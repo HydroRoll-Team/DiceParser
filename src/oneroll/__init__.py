@@ -9,3 +9,6 @@ from .stringifiers import *
 _roller = Roller()
 roll = _roller.roll
 parse = _roller.parse
+
+
+__version__ = '1.0.2'

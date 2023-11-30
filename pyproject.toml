@@ -1,6 +1,6 @@
 [project]
 name = "oneroll"
-version = "1.0.3"
+version = "1.0.2"
 description = "onedice? no, this is just another Dice Parser lib. NO OFFENSE!"
 authors = [
     {name = "简律纯", email = "i@jyunko.cn"},
