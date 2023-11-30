@@ -1,6 +1,6 @@
 [project]
 name = "oneroll"
-version = "1.0.2"
+version = "1.0.3"
 description = "onedice? no, this is just another Dice Parser lib. NO OFFENSE!"
 authors = [
     {name = "简律纯", email = "i@jyunko.cn"},
@@ -13,6 +13,9 @@ dependencies = [
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
+
+[project.scripts]
+oneroll = "oneroll.cli:Cli.parser"
 
 [build-system]
 requires = ["pdm-backend"]
