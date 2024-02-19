@@ -1,38 +1,43 @@
-import re
-import random
+# 导入ast模块
+import ast
 
-def roll_dice(expression):
-    # 定义正则表达式模式
-    pattern = r'(\d+)([+\-*/])(\d+)d(\d+)'
+# 定义一个函数，用来解析表达式字符串，并返回AST
+def parse_expr(expr):
+    # 使用ast.parse函数，将表达式字符串转换为AST
+    # mode参数指定只解析表达式，而不是完整的语句
+    tree = ast.parse(expr, mode='eval')
+    # 返回AST的根节点，即Expression节点
+    return tree.body
 
-    # 使用正则表达式匹配表达式中的各个Token
-    matches = re.findall(pattern, expression)
+# 定义一个函数，用来遍历AST，并求值
+def eval_expr(node):
+    # 如果节点是一个二元运算节点，例如加减乘除
+    if isinstance(node, ast.BinOp):
+        # 递归地求出左右子节点的值
+        left = eval_expr(node.left)
+        right = eval_expr(node.right)
+        # 根据运算符的类型，进行相应的计算，并返回结果
+        if isinstance(node.op, ast.Add):
+            return left + right
+        elif isinstance(node.op, ast.Sub):
+            return left - right
+        elif isinstance(node.op, ast.Mult):
+            return left * right
+        elif isinstance(node.op, ast.Div):
+            return left / right
+    # 如果节点是一个数字节点，直接返回它的值
+    elif isinstance(node, ast.Num):
+        return node.n
+    # 如果节点是其他类型，抛出异常
+    else:
+        raise Exception('Unsupported node type: ' + node.__class__.__name__)
 
-    # 遍历匹配结果，计算掷骰结果
-    result = 0
-    for match in matches: 
-        num1 = int(match[0])
-        operator = match[1]
-        num2 = int(match[2])
-        dice_count = int(match[3])
-        dice_sides = int(match[4])
-
-        # 掷骰子并计算结果
-        dice_result = sum(random.randint(1, dice_sides) for _ in range(dice_count))
-
-        # 根据运算符更新结果
-        if operator == '+':
-            result += num1 + num2 + dice_result
-        elif operator == '-':
-            result += num1 + num2 - dice_result
-        elif operator == '*':
-            result += (num1 + num2) * dice_result
-        elif operator == '/':
-            result += (num1 + num2) / dice_result
-
-    return result
-
-# 测试示例表达式
-expression = '3d4+2d6-5'
-result = roll_dice(expression)
-print(f'{expression} = {result}')
+# 测试一些表达式
+exprs = ['1 + 2 * 3', '(1 + 2) * 3', '4 / 2 - 1', '2 ** 3']
+for expr in exprs:
+    # 解析表达式，得到AST
+    node = parse_expr(expr)
+    # 求值AST，得到结果
+    result = eval_expr(node)
+    # 打印表达式和结果
+    print(expr, '=', result)
