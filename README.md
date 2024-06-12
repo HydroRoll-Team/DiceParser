@@ -1,10 +1,7 @@
 OneRoll
 =======
 
-_This is a fork from Rolisteam/DiceParser, but all rewritten in Python._
-
-> **Warning**
-> 名称可能和 OlivOS-Team/onedice 有点类似，但是这其中只是巧合，没有任何其他含义。
+_This is a fork from Rolisteam/DiceParser, but all rewritten in Rust and packed as a Python Module._
 
 OneRoll，用一条指令实现几乎所有跑团所需功能之意（当然你还可以选择alias封装）。
 
